@@ -11,9 +11,10 @@ conexao = psycopg2.connect(
        port = os.getenv('DB_PORT')
 )
 
-cursor = conexao.cursor()
 
-cursor.execute("""CREATE TABLE IF NOT EXISTS clientes(
+def criar_tabelas():
+ cursor = conexao.cursor()
+ cursor.execute("""CREATE TABLE IF NOT EXISTS clientes(
 id_cliente int PRIMARY KEY,
 nome varchar(100),
 cidade varchar(100),
@@ -60,6 +61,8 @@ quantidade int,
 preco_unitario NUMERIC,
 FOREIGN KEY(id_pedido) REFERENCES pedidos(id_pedido));""")
 
-conexao.commit()
-cursor.close()
-conexao.close()
+ conexao.commit()
+ cursor.close()
+ conexao.close()
+
+

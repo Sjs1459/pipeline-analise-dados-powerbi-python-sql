@@ -13,24 +13,25 @@ conexao = psycopg2.connect(
      port = os.getenv("DB_PORT")
 )
 
-cursor = conexao.cursor()
-cursor.execute("SELECT MAX(id_produto) FROM produtos")
-ultimo_id = cursor.fetchone()[0]
-base_id = 0 if ultimo_id is None else ultimo_id
 
-def cadastrar_produtos():
+
+def cadastrar_produtos(lista):
  while True:
+  cursor = conexao.cursor()
+  cursor.execute("SELECT MAX(id_produto) FROM produtos")
+  ultimo_id = cursor.fetchone()[0]
+  base_id = 0 if ultimo_id is None else ultimo_id
   try:
    print("Você gostaria de inserir qual tipo de produtos?\n1 - Produtos Hospitalares\n2 - Produtos Eletrônicos\n3 - Produtos Esportivos")
    escolha_produtos = int(input())
    if escolha_produtos == 1:
-    dados_produtos = p_hospitalar
+    dados_produtos = lista[0]
     break
    elif escolha_produtos == 2:
-    dados_produtos = p_eletronicos
+    dados_produtos = lista[1]
     break
    elif escolha_produtos == 3:
-    dados_produtos = p_esportes
+    dados_produtos = lista[3]
     break
    else:
     print("Informe o número das opções acima")
@@ -47,8 +48,6 @@ def cadastrar_produtos():
   q_inserir_produtos = "INSERT into produtos(id_produto, nome_produto, id_categoria, preco, estoque) VALUES (%s,%s,%s,%s,%s)" 
   cursor.execute(q_inserir_produtos, (id_produto, nome_produto, id_categoria, preco, estoque))
 
-
-
-conexao.commit()
-cursor.close()
-conexao.close()
+ conexao.commit()
+ cursor.close()
+ conexao.close() 
