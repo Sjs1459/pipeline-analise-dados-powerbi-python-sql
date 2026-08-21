@@ -18,27 +18,17 @@ cursor.execute("SELECT MAX(id_produto) FROM produtos")
 ultimo_id = cursor.fetchone()[0]
 base_id = 0 if ultimo_id is None else ultimo_id
 
-while True:
- try:
-  print("Você gostaria de inserir qual tipo de produtos?\n1 - Produtos Hospitalares\n2 - Produtos Eletrônicos\n 3 - Produtos Esportivos")
-  escolha_produtos = int(input())
-  if escolha_produtos == 1:
-   dados_produtos = p_hospitalar
-  elif escolha_produtos == 2:
-   dados_produtos = p_eletronicos
-  elif escolha_produtos == 3:
-   dados_produtos = p_esportes
-  else:
-   print("Informe o número das opções acima")
-  break
- except ValueError:
-  print("Informe um número")
-qt_produtos = len(dados_produtos)
+try:
+ print("Você gostaria de inserir qual tipo de produtos?\n1 - Produtos Hospitalares\n2 - Produtos Eletrônicos\n 3 - Produtos Esportivos")
+ int(input())
+except ValueError:
+ print("Insira o número das opções acima")
+qt_produtos = len(p_hospitalar)
 for i in range(qt_produtos):
  id_produto = base_id + 1 + i
- nome_produto = dados_produtos[i][0]
- id_categoria = dados_produtos[i][1]
- preco = dados_produtos[i][2]
+ nome_produto = p_hospitalar[i][0]
+ id_categoria = p_hospitalar[i][1]
+ preco = p_hospitalar[i][2]
  estoque = random.randint(1,300)
 
 
