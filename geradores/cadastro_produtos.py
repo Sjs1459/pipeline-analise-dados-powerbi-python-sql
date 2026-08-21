@@ -1,8 +1,8 @@
 import psycopg2
-from faker import Faker
 import os
-from dotenv import load_dotenv
+from dotenv import load_dotenv 
 import random
+from dados_produtos import p_hospitalar 
 
 load_dotenv()
 conexao = psycopg2.connect(
@@ -16,13 +16,20 @@ conexao = psycopg2.connect(
 cursor = conexao.cursor()
 cursor.execute("SELECT MAX(id_produto) FROM produtos")
 ultimo_id = cursor.fetchone()[0]
-qt_produtos = int(input("Quantos produtos deseja cadastrar no estoque?"))
 base_id = 0 if ultimo_id is None else ultimo_id
 
-p_hospitalar = [("Luva de Procedimento M (cx 100)", 1, 28.9)]
-for i in (len(p_hospitalar)):
+qt_produtos = len(p_hospitalar)
+for i in range(qt_produtos):
+ id_produto = base_id + 1 + i
+ nome_produto = p_hospitalar[i][0]
+ id_categoria = p_hospitalar[i][1]
+ preco = p_hospitalar[i][2]
  estoque = random.randint(1,300)
- id_produto = base_id + 1
-q_inserir_produtos = "INSERT id_produto, nome_produto, id_categoria, preco_estoque"
 
-cursor.executemany()
+
+q_inserir_produtos = "INSERT into produtos(id_produto, nome_produto, id_categoria, preco, estoque) VALUES (%s,%s,%s,%s,%s)" 
+cursor.execute(q_inserir_produtos, id_produto, nome_produto, id_categoria, preco, estoque )
+
+conexao.commit()
+cursor.close()
+conexao.close()
