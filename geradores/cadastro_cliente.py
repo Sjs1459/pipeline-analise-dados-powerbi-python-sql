@@ -19,9 +19,8 @@ conexao = psycopg2.connect(
     port = os.getenv("DB_PORT")
 )
 
-def cadastrar_clientes(): 
+def cadastrar_clientes(qt_clientes): 
  cursor = conexao.cursor()
- qt_clientes = int(input("Quantos Clientes gostaria de gerar?"))
  q_ultimo_id_cliente = 'SELECT max(id_cliente) FROM clientes'
  cursor.execute(q_ultimo_id_cliente)
  ultimo_id_cliente = cursor.fetchone()[0]
@@ -38,9 +37,9 @@ def cadastrar_clientes():
 
   query_inserir_cliente = "insert into clientes (id_cliente, nome, cidade,estado, email, data_cadastro,ativo) " \
   "values (%s, %s, %s, %s, %s, %s, %s)"
+  cursor.execute(query_inserir_cliente, (id_cliente, nome, nome_cidade,estado, email, data, ativo))
+  conexao.commit()
 
- cursor.execute(query_inserir_cliente, (id_cliente, nome, nome_cidade,estado, email, data, ativo))
 
- conexao.commit()
  cursor.close()
  conexao.close()

@@ -19,12 +19,6 @@ p_hospitalar = [
     ("Fita Micropore 25mm", 3, 6.5)
 ]
 
-'''
-1 - Bolas e Esportes Coletivos
-2 - Fitness e Musculação
-3 - Lutas e Esportes de Raquete
-4 - Periféricos e Setup
-5 - Cabos e Conectividade'''
 p_esportes = [
     ("Bola de Basquete Adams Outdoor", 1, 40.49),
     ("Bola de Futebol Campo Penalty", 1, 89.90),
@@ -39,13 +33,7 @@ p_esportes = [
     ("Capacete Ciclismo Adulto", 6, 89.90),
     ("Sinalizador LED para Bike", 6, 25.00)
 ]
-'''
-1: Periféricos de Entrada
-2: Áudio e Comunicação
-3: Vídeo e Imagem
-4: Cabos e Conectividade
-5: Energia e Carregadores
-6: Acessórios de Setup'''
+
 p_eletronicos = [
     ("Mouse Sem Fio Optico", 1, 45.90),
     ("Teclado Mecanico RGB", 1, 199.90),

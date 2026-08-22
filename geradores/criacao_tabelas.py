@@ -47,7 +47,7 @@ nome_categoria varchar(50));
 
 CREATE TABLE IF NOT EXISTS produtos(
 id_produto int PRIMARY KEY,
-nome_produto varchar(2),
+nome_produto varchar(50),
 id_categoria int, 
 preco NUMERIC(50),
 estoque int,
