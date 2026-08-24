@@ -72,4 +72,17 @@ while True: # Gera os valores de Categoria e Produtos com base na escolha do usu
  except ValueError:
        print("Insira um número inteiro")
 
-
+while True:# Gera os pedidos de venda
+  print("Quantos pedidos deseja informar?")
+  try:
+    qt_pedidos = int(input())
+    if qt_pedidos < 0:
+      print("Insira um número maior que 0")
+    else:
+      for i in range(qt_pedidos):
+       id_pedido = ped.criar_pedidos()
+       itped.cadastrar_itens_pedido(id_pedido)
+       limpar_terminal()
+      break
+  except ValueError:
+    print("Insira um número")
