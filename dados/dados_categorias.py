@@ -16,5 +16,5 @@ c_eletronicos = [("Periféricos de Entrada"),
               ("Áudio e Comunicação"),
               ("Vídeo e Imagem"),
               ("Cabos e Conectividade"),
-              ("Energia e Carregadores",
-               "Acessórios de Setup")]
+              ("Energia e Carregadores"),
+               ("Acessórios de Setup")]
