@@ -1,7 +1,7 @@
 import psycopg2
 import os
 from dotenv import load_dotenv
-import random
+from random import choice
 from datetime import date
 
 load_dotenv()
@@ -29,15 +29,15 @@ def criar_pedidos():
  q_selecionar_cliente = 'SELECT id_cliente FROM clientes'
  cursor.execute(q_selecionar_cliente)
  ids_clientes = cursor.fetchall()
- id_cliente = random.choice(ids_clientes)[0]
+ id_cliente = choice(ids_clientes)[0]
 
  q_selecionar_idvendedor = 'SELECT id_vendedor from vendedores'
  cursor.execute(q_selecionar_idvendedor)
  id_vendedores = cursor.fetchall()
- id_vendedor = random.choice(id_vendedores)
+ id_vendedor = choice(id_vendedores)
 
  data_pedido = date.today()
- status = random.choice(['entregue', 'cancelado', 'enviado', 'processando'])
+ status = choice(['entregue', 'cancelado', 'enviado', 'processando'])
 
 
  q_inserir_vendedor = 'insert into pedidos (id_pedido, id_cliente, id_vendedor, data_pedido, status) values (%s,%s,%s,%s,%s);'

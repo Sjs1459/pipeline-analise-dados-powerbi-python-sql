@@ -1,7 +1,7 @@
 import psycopg2
 import os
 from dotenv import load_dotenv 
-import random
+from random import randint
 from dados.dados_produtos import p_hospitalar, p_eletronicos, p_esportes
 
 load_dotenv()
@@ -28,7 +28,7 @@ def cadastrar_produtos(escolha_produtos):
    nome_produto = dados_produtos[i][0]
    id_categoria = dados_produtos[i][1]
    preco = dados_produtos[i][2]
-   estoque = random.randint(1,300)
+   estoque = randint(1,300)
    q_inserir_produtos = "INSERT into produtos(id_produto, nome_produto, id_categoria, preco, estoque) VALUES (%s,%s,%s,%s,%s)" 
    cursor.execute(q_inserir_produtos, (id_produto, nome_produto, id_categoria, preco, estoque))
    conexao.commit()

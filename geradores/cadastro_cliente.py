@@ -1,7 +1,7 @@
 import psycopg2
 import os
 from datetime import date
-import random
+from random import choice
 from ibge.localidades import Estados, Municipios
 from faker import Faker
 from dotenv import load_dotenv
@@ -28,12 +28,12 @@ def cadastrar_clientes(qt_clientes):
  for i in range(qt_clientes):
   id_cliente = base_id + 1 + i
   nome = fake.company()
-  cidade = random.choice(municipios)
+  cidade = choice(municipios)
   nome_cidade = cidade['nome']
   estado = cidade['microrregiao']["mesorregiao"]['UF']['sigla']
   email = fake.company_email()
   data = date.today()
-  ativo = random.choice([True, False])
+  ativo = choice([True, False])
 
   query_inserir_cliente = "insert into clientes (id_cliente, nome, cidade,estado, email, data_cadastro,ativo) " \
   "values (%s, %s, %s, %s, %s, %s, %s)"
