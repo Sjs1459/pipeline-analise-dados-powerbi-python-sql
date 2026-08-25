@@ -1,19 +1,6 @@
-import psycopg2
-import os
-from dotenv import load_dotenv
 from dados.dados_categorias import c_hospitalar, c_esportes, c_eletronicos
 
-load_dotenv()
-
-conexao = psycopg2.connect(
-  dbname = os.getenv("DB_NAME"),
-  user = os.getenv("DB_USER"),
-  password = os.getenv("DB_PASSWORD"),
-  host = os.getenv("DB_HOST"),
-  port = os.getenv("DB_PORT")
-)
-
-def cadastro_categorias(escolha_produtos):
+def cadastro_categorias(escolha_produtos, conexao):
   tipos_categorias = [c_hospitalar,c_esportes,c_eletronicos]
   dados_produtos = tipos_categorias[escolha_produtos-1]
   qt_categorias = len(dados_produtos)
@@ -25,7 +12,6 @@ def cadastro_categorias(escolha_produtos):
    nome = dados_produtos[i]
    cursor.execute(q_inserir_categorias,(id_categoria, nome))
    conexao.commit()
-  cursor.close()
-  conexao.close()
+ 
   
 

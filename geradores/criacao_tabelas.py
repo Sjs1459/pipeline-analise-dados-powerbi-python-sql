@@ -1,18 +1,4 @@
-import psycopg2
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-conexao = psycopg2.connect(
-       dbname = os.getenv('DB_NAME'),
-       user = os.getenv('DB_USER'),
-       password = os.getenv('DB_PASSWORD'),
-       host = os.getenv('DB_HOST'),
-       port = os.getenv('DB_PORT')
-)
-
-
-def criar_tabelas():
+def criar_tabelas(conexao):
  cursor = conexao.cursor()
  cursor.execute("""CREATE TABLE IF NOT EXISTS clientes(
 id_cliente int PRIMARY KEY,
@@ -62,7 +48,6 @@ preco_unitario NUMERIC,
 FOREIGN KEY(id_pedido) REFERENCES pedidos(id_pedido));""")
 
  conexao.commit()
- cursor.close()
- conexao.close()
+
 
 

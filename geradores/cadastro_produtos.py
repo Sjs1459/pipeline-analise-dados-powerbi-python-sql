@@ -1,21 +1,7 @@
-import psycopg2
-import os
-from dotenv import load_dotenv 
 from random import randint
 from dados.dados_produtos import p_hospitalar, p_eletronicos, p_esportes
 
-load_dotenv()
-conexao = psycopg2.connect(
-     dbname = os.getenv("DB_NAME"),
-     user = os.getenv("DB_USER"),
-     password = os.getenv("DB_PASSWORD"),
-     host = os.getenv("DB_HOST"),
-     port = os.getenv("DB_PORT")
-)
-
-
-
-def cadastrar_produtos(escolha_produtos):
+def cadastrar_produtos(escolha_produtos, conexao):
   tipos_produtos = [p_hospitalar, p_esportes,p_eletronicos]
   dados_produtos = tipos_produtos[escolha_produtos-1]
   qt_produtos = len(dados_produtos)
@@ -32,6 +18,5 @@ def cadastrar_produtos(escolha_produtos):
    q_inserir_produtos = "INSERT into produtos(id_produto, nome_produto, id_categoria, preco, estoque) VALUES (%s,%s,%s,%s,%s)" 
    cursor.execute(q_inserir_produtos, (id_produto, nome_produto, id_categoria, preco, estoque))
    conexao.commit()
-   cursor.close()
-  conexao.close() 
+   
 

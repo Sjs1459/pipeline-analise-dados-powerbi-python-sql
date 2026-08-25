@@ -1,25 +1,13 @@
-import psycopg2
-import os
 from datetime import date
 from random import choice
 from ibge.localidades import Estados, Municipios
 from faker import Faker
-from dotenv import load_dotenv
 
 fake = Faker('pt-BR')
 
 estados = Estados().json()
 municipios = Municipios().json()
-load_dotenv()
-conexao = psycopg2.connect(
-    dbname = os.getenv("DB_NAME"),
-    user = os.getenv("DB_USER"),
-    password = os.getenv("DB_PASSWORD"),
-    host = os.getenv("DB_HOST"),
-    port = os.getenv("DB_PORT")
-)
-
-def cadastrar_clientes(qt_clientes): 
+def cadastrar_clientes(qt_clientes, conexao): 
  cursor = conexao.cursor()
  q_ultimo_id_cliente = 'SELECT max(id_cliente) FROM clientes'
  cursor.execute(q_ultimo_id_cliente)
@@ -41,5 +29,4 @@ def cadastrar_clientes(qt_clientes):
   conexao.commit()
 
 
- cursor.close()
- conexao.close()
+

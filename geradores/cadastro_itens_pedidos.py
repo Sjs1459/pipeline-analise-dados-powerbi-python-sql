@@ -1,22 +1,11 @@
-import psycopg2
-import os
+
 from random import randint, choice
-from dotenv import load_dotenv
 from dados.dados_produtos import p_eletronicos,p_esportes,p_hospitalar
 from geradores import cadastro_pedido as ped
 
-load_dotenv()
 
-conexao = psycopg2.connect(
-        dbname = os.getenv("DB_NAME"),
-        user = os.getenv("DB_USER"),
-        password = os.getenv("DB_PASSWORD"),
-        host = os.getenv("DB_HOST"),
-        port = os.getenv("DB_PORT"))
-
-cursor = conexao.cursor()
-
-def cadastrar_itens_pedido(id_pedido):
+def cadastrar_itens_pedido(id_pedido, conexao):
+   cursor = conexao.cursor()
    for j in range(randint(1,3)):
     q_ultimo_id_item = 'SELECT MAX(id_item) FROM itens_pedido' #Seleciona o ultimo id_item para somar e descobrir o próximo, construindo em sequência
     cursor.execute(q_ultimo_id_item)
