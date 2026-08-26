@@ -26,7 +26,7 @@ def cadastrar_clientes(qt_clientes, conexao):
   query_inserir_cliente = "insert into clientes (id_cliente, nome, cidade,estado, email, data_cadastro,ativo) " \
   "values (%s, %s, %s, %s, %s, %s, %s)"
   cursor.execute(query_inserir_cliente, (id_cliente, nome, nome_cidade,estado, email, data, ativo))
-  conexao.commit()
+ conexao.commit()
 
 
 
