@@ -1,7 +1,7 @@
 # Gerador e Injetor de Dados | Supabase
-
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-3ECF8E?logo=supabase&logoColor=white)
+![PowerBI](https://img.shields.io/badge/Power_BI-F2C811?logo=powerbi&logoColor=black)
 
 Script em Python que cria automaticamente a estrutura de um banco de dados no **Supabase (PostgreSQL)** e o popula com dados fictícios — clientes, vendedores, categorias, produtos, pedidos e itens de pedido — simulando o crescimento de uma empresa de e-commerce.
 
