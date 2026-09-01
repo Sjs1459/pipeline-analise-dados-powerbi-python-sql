@@ -107,11 +107,11 @@ Os dados gerados e injetados pelo script alimentam o dashboard no **Power BI** c
 
 **Modo Claro**
 
-![Dashboard - Análise Comercial (modo claro)](dashboard/Dashboard%20-%20Analise%20Comercial.jpeg)
+![Dashboard - Análise Comercial (modo claro)](dashboard/Dashboard%20-%20Analise%20Comercial.png)
 
 **Modo Escuro**
 
-![Dashboard - Análise Comercial (modo escuro)](dashboard/Dashboard%20-%20Analise%20Comercial%20-%20Tema%20Escuro.jpeg)
+![Dashboard - Análise Comercial (modo escuro)](dashboard/Dashboard%20-%20Analise%20Comercial%20-%20Tema%20Escuro.png)
 
 
 ## Pré-requisitos
