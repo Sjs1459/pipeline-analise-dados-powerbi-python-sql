@@ -101,6 +101,19 @@ clientes ─┐
 vendedores┘
 ```
 
+## Dashboard
+
+Os dados gerados e injetados pelo script alimentam o dashboard no **Power BI** com visão no desempenho comercial: faturamento total, número de pedidos, ticket médio, % de atingimento de meta, evolução do faturamento ao longo do tempo, status dos pedidos e top 5 produtos. O dashboard está disponível em modo claro e modo escuro. 
+
+**Modo Claro**
+
+![Dashboard - Análise Comercial (modo claro)](dashboard/Dashboard%20-%20Analise%20Comercial.jpeg)
+
+**Modo Escuro**
+
+![Dashboard - Análise Comercial (modo escuro)](dashboard/Dashboard%20-%20Analise%20Comercial%20-%20Tema%20Escuro.jpeg)
+
+
 ## Pré-requisitos
 
 - Python 3.10+
